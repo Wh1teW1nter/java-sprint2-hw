@@ -6,9 +6,7 @@ public class Main {
         YearReport yearReport = new YearReport("resources/y.2021.csv");
 
         MonthReport monthReport = new MonthReport();
-        monthReport.loadFile("resources/m.202101.csv");
-        monthReport.loadFile("resources/m.202102.csv");
-        monthReport.loadFile("resources/m.202103.csv");
+        monthReport.loadFile();
 
         ReportManager reportManager = new ReportManager(yearReport, monthReport);
         boolean answer = reportManager.check();
@@ -20,15 +18,12 @@ public class Main {
 
     /*public static void printMenu() {
         System.out.println("Что вы хотите сделать? ");
-        System.out.println("1 - Конвертировать валюту");
-        System.out.println("2 - Получить совет");
-        System.out.println("3 - Ввести трату");
-        System.out.println("4 - Показать траты по категориям");
-        System.out.println("5 - Показать самую большую трату в выбранной категории");
-        System.out.println("6 - Очистить таблицу трат");
-        System.out.println("7 - Вернуть сумму всех трат");
-        System.out.println("8 - Удалить категорию");
-        System.out.println("9 - Получить имя самой дорогой категории");
+        System.out.println("1 - Считать все месячные отчёты");
+        System.out.println("2 - Считать годовой отчёт");
+        System.out.println("3 - Сверить отчёты");
+        System.out.println("4 - Вывести информацию о всех месячных отчётах");
+        System.out.println("5 - Вывести информацию о годовом отчёте");
+
         System.out.println("0 - Выход");
     } */
 }
