@@ -10,12 +10,10 @@ public class Main {
         YearReport yearReport = new YearReport();;
 
         MonthReport monthReport = new MonthReport();
-        //monthReport.loadFile();
+
 
         ReportManager reportManager = new ReportManager(yearReport, monthReport);
-        //boolean answer = reportManager.check();
-        //reportManager.printMonthInformation();
-        //System.out.println("Заебись");
+
 
 
         while(true) {

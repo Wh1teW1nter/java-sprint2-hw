@@ -8,7 +8,7 @@ import java.util.List;
 
 public class YearReport {
     public ArrayList<Year> yearsReport;
-    //public HashMap<Integer, Year> yearsReport = new HashMap<>();
+
     String yearNumberForReturn;
 
 
@@ -16,8 +16,7 @@ public class YearReport {
         yearsReport = new ArrayList<>();
         List<String> content = readFileContents(("resources/y.2021.csv"));
         yearNumberForReturn = "resources/y.2021.csv".split("\\.")[1];
-        //String content = readFileContents(path).toString();
-        //String[] lines = content.split("\r?\n");
+
         for (int i = 1; i < content.size(); i++) {
             String line = content.get(i);
             String[] parts = line.split(",");
@@ -26,7 +25,7 @@ public class YearReport {
             boolean is_expense = Boolean.parseBoolean(parts[2]);
 
             Year year = new Year(month, amount, is_expense);
-            //yearsReport.put(i, year);
+
             yearsReport.add(year);
 
         }

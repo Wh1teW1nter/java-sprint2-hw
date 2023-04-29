@@ -31,7 +31,7 @@ public class ReportManager {
             int yearRevenue = YearReport.getRevenueForMOnth(i+1);
 
             if (monthExpense==yearExpense && monthRevenue==yearRevenue){
-                //System.out.println("Всё ок");
+
             }
             else {
                 System.out.println("Всё не ок - месяц - "+(i+1));
@@ -48,39 +48,7 @@ public class ReportManager {
             System.out.println(monthWithError);
             return true;
         }
-        /*MonthReport.calculateValues(); // по-хорошему выкинуть в класс month этот метод
-        ArrayList<Integer> monthWithError = new ArrayList<>();
-        for (int i = 1; i < YearReport.yearsReport.size(); i++) {
-            int a = MonthsData.get(i).get(false);
-            int b = MonthsData.get(i).get(true);
-            if (YearReport.yearsReport.get(i).is_expense){
-                if(YearReport.yearsReport.get(i).amount==b){
-                    //всё ок. схождение по месяцу происходит благодаря позиции в списке
-                    //проверяем суммы и идем дальше
-                } else if (YearReport.yearsReport.get(i).amount!=b) {
-                    monthWithError.add(i);
-                    System.out.println("Ошибка расходов в месяце - "+i);
-                }
-            }
-            else if (!YearReport.yearsReport.get(i).is_expense){
-                if(YearReport.yearsReport.get(i).amount==a){
-                    //всё ок. схождение по месяцу происходит благодаря позиции в списке
-                    //проверяем суммы и идем дальше
-                } else if (YearReport.yearsReport.get(i).amount!=b) {
-                    monthWithError.add(i);
-                    System.out.println("Ошибка доходов в месяце - "+i);
-                }
-            }
-            //if (YearReport.yearsReport.get(i).is_expense&&M)
-        }
-        if (monthWithError.isEmpty()){
-            System.out.println("Ошибок нет");
-            return false;
-        }
-        else {
-            System.out.println("Ошибки есть");
-            return true;
-        }*/
+
 }
 
 public void printMonthInformation(){
