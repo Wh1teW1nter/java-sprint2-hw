@@ -34,7 +34,7 @@ public class Main {
                     }
                     break;
                 case PRINT_MONTH_INFO:
-                    reportManager.printMonthInformation();
+
                     if(!(monthReport.monthReport == null)){
                     reportManager.printMonthInformation();}
                     else{
