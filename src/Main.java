@@ -1,30 +1,70 @@
+import java.util.Scanner;
+
+
 public class Main {
 
     public static void main(String[] args) {
         // Поехали!
+        Scanner scanner = new Scanner(System.in);
 
-        YearReport yearReport = new YearReport("resources/y.2021.csv");
+        YearReport yearReport = new YearReport();;
 
         MonthReport monthReport = new MonthReport();
-        monthReport.loadFile();
+        //monthReport.loadFile();
 
         ReportManager reportManager = new ReportManager(yearReport, monthReport);
-        boolean answer = reportManager.check();
-        System.out.println("Заебись");
+        //boolean answer = reportManager.check();
+        //reportManager.printMonthInformation();
+        //System.out.println("Заебись");
+
+
+        while(true) {
+        Menu.printMenu();
+            switch (MenuCommand.findByCode(scanner.nextInt())) {
+                case READ_MONTH_FILES:
+                    monthReport.loadFile();
+                    break;
+                case READ_YEAR_FILES:
+                    yearReport.loadFile();
+                    break;
+                case CHECK_REPORTS:
+                    if(!(monthReport.monthReport == null)&&!(yearReport.yearsReport == null)){
+                        reportManager.check();
+                    }
+                    else{
+                        System.out.println("Необходимо считать отчеты");
+                    }
+                    break;
+                case PRINT_MONTH_INFO:
+                    reportManager.printMonthInformation();
+                    if(!(monthReport.monthReport == null)){
+                    reportManager.printMonthInformation();}
+                    else{
+                        System.out.println("Необходимо считать месячный отчет");
+                    }
+                    break;
+                case PRINT_YEAR_INFO:
+                    if(!(yearReport.yearsReport == null)){
+                        reportManager.printYearInformation();
+                    }
+                    else {
+                        System.out.println("Необходимо считать годовой отчет");
+                    }
+                    break;
+                case EXIT:
+                    System.out.println("Пока-пока :)");
+                    return;
+                default:
+                    System.out.println("Такой команды нет");
+            }
+        }
+
     }
 
 
 
 
-    /*public static void printMenu() {
-        System.out.println("Что вы хотите сделать? ");
-        System.out.println("1 - Считать все месячные отчёты");
-        System.out.println("2 - Считать годовой отчёт");
-        System.out.println("3 - Сверить отчёты");
-        System.out.println("4 - Вывести информацию о всех месячных отчётах");
-        System.out.println("5 - Вывести информацию о годовом отчёте");
 
-        System.out.println("0 - Выход");
-    } */
+
 }
 
