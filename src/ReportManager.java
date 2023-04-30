@@ -24,11 +24,11 @@ public class ReportManager {
         for (int i = 0; i < 3; i++){
 
             ArrayList<HashMap<Boolean, Integer>> check = MonthReport.monthsArray;       // index (номер месяца-1) - hashmap
-                                                                                        // Трата - значение, Не трата - значение
+            // Трата - значение, Не трата - значение
             int monthExpense = check.get(i).get(false);
             int monthRevenue = check.get(i).get(true);
-            int yearExpense = YearReport.getExpenseForMOnth(i+1);
-            int yearRevenue = YearReport.getRevenueForMOnth(i+1);
+            int yearExpense = YearReport.getExpenseForMonth(i+1);
+            int yearRevenue = YearReport.getRevenueForMonth(i+1);
 
             if (monthExpense==yearExpense && monthRevenue==yearRevenue){
 
@@ -49,31 +49,30 @@ public class ReportManager {
             return true;
         }
 
-}
-
-public void printMonthInformation(){
-    MonthReport.calculateValues();
-    for (int i = 0; i < MonthReport.monthsArray.size(); i++) {
-        String itemName;
-        Integer value;
-        System.out.println(MonthReport.getMonthNames(i+1));
-
-        System.out.println("Самый прибыльный товар: " +MonthReport.getMostProfitableItem(i+1).keySet().toArray()[0]+
-                ". На сумму: " +MonthReport.getMostProfitableItem(i+1).get(MonthReport.getMostProfitableItem(i+1).keySet().toArray()[0]));
-        System.out.println("Самая большая трата: "+MonthReport.getMostExpensiveItem(i+1).keySet().toArray()[0]+
-                ". На сумму: " +MonthReport.getMostExpensiveItem(i+1).get(MonthReport.getMostExpensiveItem(i+1).keySet().toArray()[0]));
     }
 
-}
+    public void printMonthInformation(){
+        MonthReport.calculateValues();
+        for (int i = 0; i < 3; i++) {
 
-public void printYearInformation(){
-    System.out.println(YearReport.yearNumberForReturn);
-    for (int i = 0; i < 3; i++) {
-        System.out.println("Прибыль за "+(i+1)+ "-й месяц: "+(YearReport.getRevenueForMOnth(i+1)-YearReport.getExpenseForMOnth(i+1)));
+            System.out.println(MonthReport.getMonthNames(i+1));
+
+            System.out.println("Самый прибыльный товар: " +MonthReport.getMostProfitableItem(i+1).keySet().toArray()[0]+
+                    ". На сумму: " +MonthReport.getMostProfitableItem(i+1).get(MonthReport.getMostProfitableItem(i+1).keySet().toArray()[0]));
+            System.out.println("Самая большая трата: "+MonthReport.getMostExpensiveItem(i+1).keySet().toArray()[0]+
+                    ". На сумму: " +MonthReport.getMostExpensiveItem(i+1).get(MonthReport.getMostExpensiveItem(i+1).keySet().toArray()[0]));
+        }
+
     }
-    System.out.println("Средний расход: "+YearReport.averageExpense());
 
-    System.out.println("Средний доход: "+YearReport.averageRevenue());
-}
+    public void printYearInformation(){
+        System.out.println(YearReport.yearNumberForReturn);
+        for (int i = 0; i < 3; i++) {
+            System.out.println("Прибыль за "+(i+1)+ "-й месяц: "+(YearReport.getRevenueForMonth(i+1)-YearReport.getExpenseForMonth(i+1)));
+        }
+        System.out.println("Средний расход: "+YearReport.averageExpense());
+
+        System.out.println("Средний доход: "+YearReport.averageRevenue());
+    }
 
 }

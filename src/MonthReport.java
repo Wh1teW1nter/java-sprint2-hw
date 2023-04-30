@@ -9,8 +9,8 @@ import java.util.List;
 
 public class MonthReport {
 
-public HashMap<Integer, ArrayList<Month>> monthsReports = new HashMap<Integer, ArrayList<Month>>();
-public ArrayList<Month> monthReport;
+    public HashMap<Integer, ArrayList<Month>> monthsReports = new HashMap<Integer, ArrayList<Month>>();
+    public ArrayList<Month> monthReport; //Используется в проверках в main классе, см строки: 29, 38.
 
     public void loadFile(){  //"m.20210" + i + ".csv"
         for (int i = 1; i <= 3; i++) {
@@ -34,17 +34,19 @@ public ArrayList<Month> monthReport;
     }
 
 
-    public HashMap<Boolean, Integer> report = new HashMap<Boolean, Integer>(); // Трата - значение, Не трата - значение
-    public ArrayList<HashMap<Boolean, Integer>> monthsArray = new ArrayList<>(); // index (номер месяца-1) - hashmap
+      // Трата - значение, Не трата - значение
+    public ArrayList<HashMap<Boolean, Integer>> monthsArray = new ArrayList<>(); //Используется в ReportManager см. строки: 26
+    // index (номер месяца-1) - hashmap
     void calculateValues() {
 
-        for (int i = 1; i-1 <monthsReports.size(); i++) {
+        HashMap<Boolean, Integer> report = new HashMap<Boolean, Integer>();
+        for (int i = 0; i <monthsReports.size(); i++) {
 
             report = new HashMap<Boolean, Integer>();
             int expense = 0;
             int revenue = 0;
 
-            for (Month month : monthsReports.get(i)){
+            for (Month month : monthsReports.get(i+1)){
                 int curSum = 0;
                 curSum = month.sum_of_one*month.quantity;
                 if (month.is_expense){
@@ -66,15 +68,13 @@ public ArrayList<Month> monthReport;
         HashMap<String, Integer> mostProfitableItem = new HashMap<String, Integer>();
         for (Month month : monthsReports.get(monthNumber)) {
             int curSum = month.quantity*month.sum_of_one;
-            if (month.is_expense){
-                continue;
-            }
-            else{
+            if (!month.is_expense){
                 if(curSum>profit){
                     profit=curSum;
                     itemName = month.item_name;
                 }
             }
+
         }
         mostProfitableItem.put(itemName, profit);
         return mostProfitableItem;
@@ -87,15 +87,13 @@ public ArrayList<Month> monthReport;
         HashMap<String, Integer> mostExpensiveItem = new HashMap<String, Integer>();
         for (Month month : monthsReports.get(monthNumber)) {
             int curSum = month.quantity*month.sum_of_one;
-            if (!month.is_expense){
-                continue;
-            }
-            else{
+            if (month.is_expense){
                 if(curSum>Expense){
                     Expense=curSum;
                     itemName = month.item_name;
                 }
             }
+
         }
         mostExpensiveItem.put(itemName, Expense);
         return mostExpensiveItem;

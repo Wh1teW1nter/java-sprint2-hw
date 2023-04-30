@@ -31,17 +31,17 @@ public class YearReport {
         }
     }
 
-     int getExpenseForMOnth(Integer i){
+    int getExpenseForMonth(Integer i){
         int returnValue = 0;
-         for (Year year : yearsReport) {
-             if(year.is_expense&&year.month==i){
-                 returnValue = year.amount;
-             }
-         }
-         return returnValue;
-     }
+        for (Year year : yearsReport) {
+            if(year.is_expense&&year.month==i){
+                returnValue = year.amount;
+            }
+        }
+        return returnValue;
+    }
 
-    int getRevenueForMOnth(Integer i){
+    int getRevenueForMonth(Integer i){
         int returnValue = 0;
         for (Year year : yearsReport) {
             if(!year.is_expense&&year.month==i){
@@ -55,7 +55,7 @@ public class YearReport {
         int revenue = 0;
         int iteration = 1;
         for (int i = 0; i < yearsReport.size(); i++) {
-            revenue+=getRevenueForMOnth(i+1);
+            revenue+=getRevenueForMonth(i+1);
             iteration++;
         }
         return revenue/iteration;
@@ -65,7 +65,7 @@ public class YearReport {
         int expense = 0;
         int iteration = 1;
         for (int i = 0; i < yearsReport.size(); i++) {
-            expense+=getExpenseForMOnth(i+1);
+            expense+=getExpenseForMonth(i+1);
             iteration++;
         }
         return expense/iteration;
